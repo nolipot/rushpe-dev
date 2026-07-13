@@ -164,8 +164,8 @@ function CTAButton({
     variant === "primary"
       ? "bg-[#cc0033] text-white hover:bg-red-700 focus-visible:ring-[#cc0033]"
       : variant === "secondary"
-      ? "bg-white text-neutral-900 ring-1 ring-black/10 hover:bg-neutral-50 focus-visible:ring-[#cc0033]"
-      : "text-neutral-900 hover:bg-white/60";
+        ? "bg-white text-neutral-900 ring-1 ring-black/10 hover:bg-neutral-50 focus-visible:ring-[#cc0033]"
+        : "text-neutral-900 hover:bg-white/60";
   return (
     <Link href={href} className={`${base} ${styles}`}>
       {children} <ChevronRight className="h-4 w-4" />
@@ -187,7 +187,9 @@ function MetaChip({
     <span className="inline-flex items-start gap-2 rounded-full bg-white/85 px-3 py-2 text-left shadow-sm ring-1 ring-black/10 backdrop-blur-sm">
       {icon ? <span className="mt-0.5 text-neutral-700">{icon}</span> : null}
       <span className="leading-tight">
-        <span className="block text-sm font-semibold text-neutral-900">{title}</span>
+        <span className="block text-sm font-semibold text-neutral-900">
+          {title}
+        </span>
         {subtitle ? (
           <span className="block text-xs text-neutral-600">{subtitle}</span>
         ) : null}
@@ -254,9 +256,15 @@ function HeroSplit() {
               title="Rutgers Engineering"
               subtitle="On-campus access"
             />
-            <MetaChip title="3-Day Event" subtitle="Immersive campus experience" />
+            <MetaChip
+              title="3-Day Event"
+              subtitle="Immersive campus experience"
+            />
             <MetaChip title="30–40 Students" subtitle="NJ juniors & seniors" />
-            <MetaChip title="Free for Attendees" subtitle="Resources & headshots" />
+            <MetaChip
+              title="Free for Attendees"
+              subtitle="Resources & headshots"
+            />
           </div>
         </div>
 
@@ -264,12 +272,18 @@ function HeroSplit() {
         <div className="relative">
           <div
             className="absolute -left-10 -top-6 h-24 w-24 rounded-full blur-3xl"
-            style={{ background: "radial-gradient(closest-side, #cc003326, transparent)" }}
+            style={{
+              background:
+                "radial-gradient(closest-side, #cc003326, transparent)",
+            }}
             aria-hidden
           />
           <div
             className="absolute -right-8 bottom-8 h-20 w-20 rounded-full blur-2xl"
-            style={{ background: "radial-gradient(closest-side, #2b6cb026, transparent)" }}
+            style={{
+              background:
+                "radial-gradient(closest-side, #2b6cb026, transparent)",
+            }}
             aria-hidden
           />
           <div className="relative mx-auto max-w-[34rem]">
@@ -354,20 +368,17 @@ function Partnering() {
   const items = [
     {
       title: "Hosting workshops",
-      desc:
-        "Co-develop hands-on sessions with your engineers: resume labs, mock interviews, or product demos.",
+      desc: "Co-develop hands-on sessions with your engineers: resume labs, mock interviews, or product demos.",
       img: "/shadow-program/shadow-program-4.jpg",
     },
     {
       title: "Social media features",
-      desc:
-        "Mentions across our channels and recap reels that amplify your brand’s commitment to equity in STEM.",
+      desc: "Mentions across our channels and recap reels that amplify your brand’s commitment to equity in STEM.",
       img: "/shadow-program/shadow-company-1.jpg",
     },
     {
       title: "Logo placement",
-      desc:
-        "Prominent branding on shirts, flyers, and event media. We share editable templates for quick approval.",
+      desc: "Prominent branding on shirts, flyers, and event media. We share editable templates for quick approval.",
       img: "/shadow-program/shadow-company-2.jpg",
     },
   ];
@@ -423,20 +434,17 @@ function Benefits() {
     {
       icon: <Camera className="h-6 w-6" />,
       title: "Brand Visibility",
-      copy:
-        "Logo exposure across shirts, flyers, recap videos, and campus media—aligned with a mission that matters.",
+      copy: "Logo exposure across shirts, flyers, recap videos, and campus media—aligned with a mission that matters.",
     },
     {
       icon: <Handshake className="h-6 w-6" />,
       title: "Community Engagement",
-      copy:
-        "Demonstrate your sustained commitment to underrepresented youth in STEM with measurable impact.",
+      copy: "Demonstrate your sustained commitment to underrepresented youth in STEM with measurable impact.",
     },
     {
       icon: <Users className="h-6 w-6" />,
       title: "Networking",
-      copy:
-        "Plug into the SHPE ecosystem—pipelines to talented students, alumni, and peer organizations.",
+      copy: "Plug into the SHPE ecosystem—pipelines to talented students, alumni, and peer organizations.",
     },
   ];
 
@@ -488,8 +496,8 @@ function FinalCTA() {
               Interested in Partnering or Volunteering?
             </h2>
             <p className="mt-2 text-neutral-700 sm:text-lg">
-              Help us expand access to engineering for students across New Jersey.
-              We welcome sponsors, mentors, and educators.
+              Help us expand access to engineering for students across New
+              Jersey. We welcome sponsors, mentors, and educators.
             </p>
 
             <div className="mt-5 flex flex-wrap gap-3">
@@ -721,7 +729,7 @@ function Gallery() {
                 </div>
               </div>
             </div>,
-            document.body
+            document.body,
           )}
       </div>
     </section>

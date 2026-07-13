@@ -1,7 +1,7 @@
 // src/components/NavBar.tsx
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -27,7 +27,6 @@ export default function NavBar({ isTransparent = false }: { isTransparent?: bool
 
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [collapse, setCollapse] = useState(false);
   const [mounted, setMounted] = useState(false); // for portal
 
@@ -37,41 +36,16 @@ export default function NavBar({ isTransparent = false }: { isTransparent?: bool
 
   useEffect(() => setMounted(true), []);
 
-  const prefersReducedMotion = useMemo(
-    () =>
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches,
-    []
-  );
-
-  // Hide header on scroll down / show on scroll up
+  // Keep navbar stable and visible; only update scrolled visual state.
   useEffect(() => {
-    if (prefersReducedMotion) return;
-    let lastY = window.scrollY;
-    const DOWN = 6, UP = 6, HIDE_AT = 0;
-
     const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 2);
-
-      if (open) {
-        setHidden(false);
-        lastY = y;
-        return;
-      }
-      const goingDown = y > lastY + DOWN;
-      const goingUp = y < lastY - UP;
-
-      if (goingDown && y > HIDE_AT) setHidden(true);
-      else if (goingUp || y <= HIDE_AT) setHidden(false);
-
-      lastY = y;
+      setScrolled(window.scrollY > 2);
     };
 
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [open, prefersReducedMotion]);
+  }, []);
 
   // Close menu on route change; Esc closes
   useEffect(() => setOpen(false), [pathname]);
@@ -133,23 +107,20 @@ export default function NavBar({ isTransparent = false }: { isTransparent?: bool
       : "bg-white/70"
     : "bg-white shadow-sm ring-1 ring-black/5";
 
-  const headerMotion = hidden ? "-translate-y-full opacity-0" : "opacity-100";
-
   return (
     <>
       <header
         className={[
-          "sticky top-0 z-[1000]",
+          "sticky top-0 z-[60]",
           headerBg,
-          "transition-[transform,opacity] duration-300",
-          headerMotion,
+          "transition-[background-color,box-shadow] duration-300",
           "supports-[backdrop-filter]:backdrop-blur-md",
         ].join(" ")}
       >
         {/* Skip link */}
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[1100] focus:rounded-md focus:bg-white focus:px-3 focus:py-1.5 focus:text-sm focus:shadow"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[70] focus:rounded-md focus:bg-white focus:px-3 focus:py-1.5 focus:text-sm focus:shadow"
         >
           Skip to content
         </a>
@@ -234,7 +205,7 @@ export default function NavBar({ isTransparent = false }: { isTransparent?: bool
             aria-controls="mobile-menu"
             className={[
               "ml-auto md:hidden h-10 w-10 inline-flex items-center justify-center rounded-md bg-white text-slate-900 shadow-sm hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-scarlet",
-              "relative z-[1100]",
+              "relative z-[65]",
             ].join(" ")}
           >
             <span
@@ -260,7 +231,7 @@ export default function NavBar({ isTransparent = false }: { isTransparent?: bool
         createPortal(
           <div
             id="mobile-menu"
-            className={["fixed inset-x-0 bottom-0 z-[100] md:hidden", HEADER_TOP].join(" ")}
+            className={["fixed inset-x-0 bottom-0 z-[1200] md:hidden", HEADER_TOP].join(" ")}
             aria-hidden={!open}
           >
             <nav aria-label="Mobile" className="h-full bg-neutral-900 text-white/90">
