@@ -2,8 +2,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-import { google } from 'googleapis';
-import { JWT } from 'google-auth-library';
 import "mssql";
 
 // Your web app's Firebase configuration

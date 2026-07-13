@@ -20,7 +20,6 @@ import {
 
 import hesaaImg from "@/../public/shpetinas/resources/hesaa.jpg";
 import redcard1 from "@/../public/shpetinas/resources/red-card-1.jpg";
-import redcard2 from "@/../public/shpetinas/resources/red-card-2.jpg";
 import redcard3 from "@/../public/shpetinas/resources/red-card-3.jpg";
 
 /** ===== Motion helpers ===== */

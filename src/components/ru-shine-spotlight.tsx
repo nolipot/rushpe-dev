@@ -14,8 +14,6 @@ import {
 
 import type { Alumni } from "@/app/ru-shine/data";
 
-const RUTGERS_SCARLET = "#CC0033";
-
 /* ----------------------------- inline icons ----------------------------- */
 const IconLinkedIn = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>

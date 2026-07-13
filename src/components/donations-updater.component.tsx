@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { createClient } from "@supabase/supabase-js";
 
 const supabaseClient = createClient(

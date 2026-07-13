@@ -8,8 +8,6 @@ import luisCoronel from "@/../public/ru-shine/luis-coronel.jpg";
 import sabrinaPerez from "@/../public/ru-shine/sabrina-perez.jpg";
 import kelvinGuzman from "@/../public/ru-shine/kelvin-guzman.jpg";
 
-import rushineAvatar from "@/../public/ru-shine/alumni-geese.jpg";
-
 /** Full spotlight record used by the hub and detail pages */
 export type Alumni = {
   slug: string;

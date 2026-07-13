@@ -1,6 +1,5 @@
 import type { SponsorTiers } from './types';
 import {
-  verizonLogo,
   bofaLogo,
   whitingturnerLogo,
   bloombergLogo,

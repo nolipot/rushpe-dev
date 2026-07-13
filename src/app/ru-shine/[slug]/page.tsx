@@ -1,7 +1,7 @@
 // src/app/ru-shine/[slug]/page.tsx
 import { notFound } from "next/navigation";
 import Spotlight from "@/components/ru-shine-spotlight";
-import { alumni, getAllSlugs, getAlumBySlug } from "../data";
+import { getAllSlugs, getAlumBySlug } from "../data";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));

@@ -33,7 +33,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "dist/types/**/*.ts"
-, "src/app/api/test.js"  ],
+  ],
   "exclude": [
     "node_modules"
   ]
