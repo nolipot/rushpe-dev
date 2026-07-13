@@ -18,13 +18,48 @@
   .cal-subscribe:hover{ transform: translateY(-1px); background-color: rgb(2 132 199); box-shadow: 0 12px 30px rgba(2,6,23,.22); }
 
   /* ---------- Today panel ---------- */
-  .today-panel   { @apply mb-5 rounded-2xl bg-white ring-1 ring-slate-200 p-4; }
-  .today-title   { @apply text-base sm:text-lg font-semibold text-black mb-2; }
-  .today-list    { @apply flex flex-col gap-2; }
-  .today-item    { @apply flex items-center gap-2; }
-  .today-time    { @apply text-sm text-black w-24 sm:w-28 shrink-0; }
-  .today-pill    { @apply inline-flex items-center rounded-md px-2 py-1 text-[13px]; }
+  .today-panel{
+    @apply mb-5 rounded-2xl bg-slate-50/70 ring-1 ring-slate-200 p-4 sm:p-5;
+    box-shadow: 0 10px 24px rgba(2, 6, 23, 0.04);
+  }
+  .today-head    { @apply mb-3 sm:mb-4; }
+  .today-title-main{ @apply text-xl sm:text-2xl font-bold tracking-tight text-black; }
+  .today-date    { @apply mt-1 text-base sm:text-lg font-semibold text-black; }
+  .today-count   { @apply mt-1 text-sm sm:text-base text-black/70; }
+  .today-list    { @apply flex flex-col gap-2.5; }
+  .today-item    { @apply flex items-center gap-2 rounded-xl bg-white ring-1 ring-slate-200 px-2.5 py-2; }
+  .today-time    { @apply text-sm text-black w-24 sm:w-28 shrink-0 font-medium; }
+  .today-pill{
+    @apply inline-flex w-full items-center rounded-md px-2.5 py-1.5 text-[13px] text-left transition;
+    box-shadow: inset 0 0 0 1px rgba(2, 6, 23, 0.06);
+  }
   .today-empty   { @apply text-sm text-black/70; }
+
+  /* ---------- Socials ---------- */
+  .cal-socials{
+    @apply mb-5 rounded-2xl bg-white ring-1 ring-slate-200 p-4 sm:p-5;
+    box-shadow: 0 10px 24px rgba(2, 6, 23, 0.04);
+  }
+  .cal-socials-head{ @apply mb-3 sm:mb-4; }
+  .cal-socials-title{ @apply text-lg sm:text-xl font-semibold text-black; }
+  .cal-socials-subtitle{ @apply mt-1 text-sm text-black/70; }
+  .cal-socials-grid{ @apply grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-4; }
+  .cal-social-card{
+    @apply flex items-center gap-2.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-medium text-black
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300;
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
+  }
+  .cal-social-card:hover{
+    transform: translateY(-1px);
+    border-color: rgb(125 211 252);
+    background-color: rgb(255 255 255);
+    box-shadow: 0 10px 22px rgba(2, 6, 23, 0.08);
+  }
+  .cal-social-icon-wrap{
+    @apply inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-slate-200;
+  }
+  .cal-social-icon{ @apply h-5 w-5 object-contain; }
+  .cal-social-label{ @apply truncate; }
 
   /* ---------- Week labels ---------- */
   .cal-weeklabels { @apply grid grid-cols-7 text-center text-xs text-black pb-2; }
@@ -77,22 +112,35 @@
   @keyframes popIn{ from{ transform: translateY(6px) scale(.98); opacity:.8 } to{ transform:none; opacity:1 } }
 
   /* ---------- Under-grid details ---------- */
-  .day-detail-date{ @apply w-fit mx-auto mt-6 text-xs px-2 py-1 bg-slate-100 rounded-md text-black; }
-  .day-detail-list{ @apply flex flex-col gap-4 py-3 sm:items-center; }
-  .detail-card{
-    @apply relative w-full sm:w-4/5 p-4 rounded-2xl bg-white ring-1 ring-slate-200 text-black;
-    box-shadow: 0 10px 24px rgba(2,6,23,.06);
+  .day-detail-section{
+    @apply mt-7 rounded-2xl bg-slate-50/70 ring-1 ring-slate-200 px-4 py-5 sm:px-6 sm:py-6;
   }
-  .detail-head{ @apply flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1; }
-  .detail-title{ @apply text-base sm:text-lg font-semibold text-black; }
-  .detail-when{ @apply text-sm text-black; }
-  .detail-meta{ @apply mt-1 flex flex-wrap gap-3 text-sm text-black; }
-  .detail-text{ @apply mt-2 text-[14px] leading-relaxed text-black; }
+  .day-detail-header{ @apply mb-4 sm:mb-5; }
+  .day-detail-title-main{
+    @apply text-2xl sm:text-3xl font-bold tracking-tight text-black;
+  }
+  .day-detail-subtitle{
+    @apply mt-1 text-sm sm:text-base text-black/70;
+  }
+  .day-detail-list{ @apply flex flex-col gap-4; }
+  .detail-card{
+    @apply relative w-full p-4 sm:p-5 rounded-2xl bg-white ring-1 ring-slate-200 text-black;
+    box-shadow: 0 10px 24px rgba(2,6,23,.07);
+  }
+  .detail-head{ @apply flex flex-col gap-1.5; }
+  .detail-title{ @apply text-lg sm:text-xl font-semibold text-black; }
+  .detail-when{ @apply text-sm sm:text-[15px] text-black/80; }
+  .detail-meta{ @apply mt-2 flex flex-wrap gap-3 text-sm text-black; }
+  .detail-text{ @apply mt-3 text-[14px] leading-relaxed text-black; }
 
   .detail-img{
-    @apply mt-3 rounded-lg ring-1 ring-slate-200 mx-auto object-cover;
+    @apply mt-4 rounded-lg ring-1 ring-slate-200 mx-auto object-cover;
     width: min(100%, 360px);
     height: auto;
+  }
+  .detail-footer{ @apply mt-1; }
+  .detail-empty{
+    @apply rounded-2xl bg-white p-5 text-sm sm:text-base text-black/70 ring-1 ring-slate-200;
   }
 
   .cal-link { @apply underline text-black hover:text-black; }
