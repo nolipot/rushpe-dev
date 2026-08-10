@@ -11,7 +11,8 @@ import {
 import { FaLinkedinIn } from 'react-icons/fa';
 import { MdOutlineMail } from 'react-icons/md';
 
-import { eBoardData2025_2026 } from './eboard-data-2025-2026'; // current year
+import { eBoardData2026_2027 } from './eboard-data-2026-2027'; // current year 
+import { eBoardData2025_2026 } from './eboard-data-2025-2026'; // 2025-2026
 import { eBoardData2024_2025 } from './eboard-data-2024-2025'; // 2024-2025
 
 import './executive-board.css';
@@ -37,10 +38,11 @@ type BoardEntry = {
 /** Add new years by importing the data file and pushing one object here. */
 const PREVIOUS_BOARDS: BoardEntry[] = [
   { id: '2024-2025', data: eBoardData2024_2025 as Member[] },
-  // { id: '2023-2024', data: eBoardData2023_2024 as Member[] },
 
   { id: '2025-2026', data: eBoardData2025_2026 as Member[] },
-  // { id: '2026-2027', data: eBoardData2026_2027 as Member[] }
+ 
+  //{ id: '2026-2027', data: eBoardData2026_2027 as Member[] },
+  
 ];
 
 /* Helper:  "2024-2025" -> "2024–2025" (en dash, nicer typography) */
@@ -236,7 +238,7 @@ function PreviousBoardsModal({
 /* ----------------------------- Page ----------------------------- */
 export default function ExecutiveBoard() {
   const [modalOpen, setModalOpen] = useState(false);
-  const members = useMemo(() => eBoardData2025_2026 as Member[], []);
+  const members = useMemo(() => eBoardData2026_2027 as Member[], []);
 
   return (
     <main className="eb-surface">
@@ -249,7 +251,7 @@ export default function ExecutiveBoard() {
             transition={{ duration: 0.45, ease: EASE_OUT }}
             className="eb-title"
           >
-            Executive Board 2025 - 2026
+            Executive Board 2026 - 2027
           </motion.h1>
 
           <motion.p
