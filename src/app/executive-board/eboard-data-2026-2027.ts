@@ -1,143 +1,143 @@
-// Executive Board 2025-2026 Imports
+// Executive Board 2026-2027 Imports (Not Finished)
 
-import shpetinasHeadshot2025 from '@/../public/executive-board-24_25/ana-maria-moreno.jpeg';
-import communityHeadshot2025 from '@/../public/executive-board-24_25/ricardo-rodriguez.jpg';
-import webmasterHeadshot2025 from '@/../public/executive-board-24_25/steven-chen.jpg';
-import academicHeadshot2025 from '@/../public/executive-board-24_25/axel-pillacela.jpg';
-import fundraisingHeadshot2025 from '@/../public/executive-board-24_25/kevin-arruda.jpeg';
-import activitiesHeadshot2025 from '@/../public/executive-board-24_25/michael-schmidt.jpeg';
-import publicityHeadshot2025 from '@/../public/executive-board-24_25/genesis-nieto.jpg';
-import secretaryHeadshot2025 from '@/../public/executive-board-24_25/ryan-muriel.jpeg';
-import internalVpHeadshot2025 from '@/../public/executive-board-24_25/michael.jpg';
-import treasurerHeadshot2025 from '@/../public/executive-board-24_25/edwin-espin.jpg';
-import presidentHeadshot2025 from '@/../public/executive-board-24_25/nathaly.jpeg';
-import externalVpHeadshot2025 from '@/../public/executive-board-24_25/daniel-gonzalez.jpeg';
-import collegiateHeadshot2025 from '@/../public/executive-board-24_25/daniela-reyes.jpeg';
-import historianHeadshot2025 from '@/../public/executive-board-24_25/fabiana-angulo-la-rosa.jpeg';
-import outreachHeadshot2025 from '@/../public/executive-board-24_25/kevin-pena.jpg';
+import shpetinasHeadshot2026 from '@/../public/executive-board-24_25/esmeralda-gil.jpg';
+import communityHeadshot2026 from '@/../public/executive-board-24_25/leslie-bunay.jpg';
+import webmasterHeadshot2026 from '@/../public/executive-board-24_25/ricardo-barahona.jpg';
+import academicHeadshot2026 from '@/../public/executive-board-24_25/daniel-morantes-villanueva.jpg';
+import fundraisingHeadshot2026 from '@/../public/executive-board-24_25/joshua-elgalwy.jpg';
+import activitiesHeadshot2026 from '@/../public/executive-board-24_25/joshua-arias.jpg';
+import publicityHeadshot2026 from '@/../public/executive-board-24_25/valentina-gonzalez.jpg';
+import secretaryHeadshot2026 from '@/../public/executive-board-24_25/isa-lanman.jpg';
+import internalVpHeadshot2026 from '@/../public/executive-board-24_25/rodrigo-marquez.jpg';
+import treasurerHeadshot2026 from '@/../public/executive-board-24_25/seiry-gonzalez.jpg';
+import presidentHeadshot2026 from '@/../public/executive-board-24_25/ricardo-rodriguez.jpg';
+import externalVpHeadshot2026 from '@/../public/executive-board-24_25/juan-jose-flechas-latorre.jpeg';
+import collegiateHeadshot2026 from '@/../public/executive-board-24_25/ahmed-ouardbane.jpg';
+import historianHeadshot2026 from '@/../public/executive-board-24_25/natalie-mercado.jpg';
+import outreachHeadshot2026 from '@/../public/executive-board-24_25/mariana-wharff.jpg';
 
-export const eBoardData2025_2026 = [
+export const eBoardData2026_2027 = [
     {
         position: 'President',
-        name: 'Nathaly Alpapucho',
-        headshot: presidentHeadshot2025,
+        name: 'Ricardo Rodriguez',
+        headshot: presidentHeadshot2026,
         email: 'president@rushpe.org',
-        linkedin: 'https://www.linkedin.com/in/nathaly-a16alp/',
-        desc: "I'm a first-generation student who graduated as an Industrial Systems Engineer in Spring '25 and currently working towards my Masters. I'm a proud Ecuadorian who loves to mentor the youth. If I'm not at the PRCC with my SHE familia or doing events as an Engineering Ambassador, you'll probably find me editing videos, taking pictures, talking to my cats or learning to swim.",
+        linkedin: 'https://www.linkedin.com/in/ricardo-rodriguez06/',
+        desc: "Hello! I am a Junior majoring in mechanical engineering and working towards a packaging certificate. I’m a proud Peruvian who aims to give opportunities to others. This year, I‘m excited to be SHE’s President and serve the community. Outside of classes, I like to play piano or guitar, and sing.",
         index: 0
     }, {
         position: 'External Vice President',
-        name: 'Daniel Gonzalez',
-        headshot: externalVpHeadshot2025,
+        name: 'Juan Flechas',
+        headshot: externalVpHeadshot2026,
         email: 'externalvp@rushpe.org',
-        linkedin: 'https://www.linkedin.com/in/daniel-gonzalez-7337b0252/',
-        desc: "I am a Senior majoring in Chemical Engineering and working towards a certificate in Packaging Engineering. I am the External Vice President this year for Rutgers SHPE and am looking forward to the year's events. On campus I am also a SoE Ambassador, a Learning Assistant, and a First Year Integration Leader.",
+        linkedin: 'https://www.linkedin.com/in/juan-flechas/',
+        desc: "I’m a first-generation student studying Mechanical Engineering with a deep passion for the automotive field. As a native-born Colombian, I have a firm belief that cheese belongs in hot chocolate and no one can tell me otherwise! On a serious note, I’m currently an Intern at Cummins and an upcoming one at Honda. My biggest wish is to bring opportunities to my familia, the same way they’ve done for me in these past few years.",
         index: 1
     }, {
         position: 'Internal Vice President',
-        name: 'Michael Cardenas',
-        headshot: internalVpHeadshot2025,
+        name: 'Rodrigo Márquez',
+        headshot: internalVpHeadshot2026,
         email: 'internalvp@rushpe.org',
-        linkedin: 'https://www.linkedin.com/in/michaelc1252',
-        desc: "As an Electrical and Computer Engineering student, I am committed to delivering high quality work and continuously supporting my SHPE chapter. With experience in IT Support and leadership skills gained from previous roles, I am excited to prepare everyone for the National SHPE convention and work on the Multicultural festival in my role as this year's Internal Vice President.",
+        linkedin: 'https://www.linkedin.com/in/rodrigo-marquez1/',
+        desc: "Hi, I'm Rodrigo! A proud Peruvian and first-generation immigrant studying Industrial Engineering at Rutgers. My journey has taught me to bring the same energy I put into a good salsa song into everything I do. Whether that's optimizing a process or building a community. SHE feels like home: a place where my roots and my goals fit together:)",
         index: 2
     }, {
         position: 'Secretary',
-        name: 'Ryan Muriel',
-        headshot: secretaryHeadshot2025,
+        name: 'Isa Lanman',
+        headshot: secretaryHeadshot2026,
         email: 'secretary@rushpe.org',
-        linkedin: 'https://www.linkedin.com/in/ryanmuriel/',
-        desc: "I am a Junior studying Computer Engineering and I am excited to be this year's Secretary. I love playing billiard pool in my free time.",
+        linkedin: 'https://www.linkedin.com/in/isabel-lanman/',
+        desc: "Hi! I am currently a junior studying Electrical Engineering. I have been a part of SHE since my freshman year and now have the pleasure of being Sectretary for this school year. I love meeting new people, so never hesistate to reach out to me!",
         index: 3
     }, {
         position: 'Treasurer',
-        name: 'Edwin Espin',
-        headshot: treasurerHeadshot2025,
+        name: 'Seiry Gonzalez',
+        headshot: treasurerHeadshot2026,
         email: 'treasurer@rushpe.org',
-        linkedin: 'https://www.linkedin.com/in/edwinespin',
-        desc: "My name is Edwin Espin. I am majoring in Electrical and Computer Engineering. I am an Ecuadorian Colombian first generation student. A fun fact about me is I like to train martial arts and dance for fun. I also am the middle of seven kids!",
+        linkedin: 'https://www.linkedin.com/in/seiry-gonzalez/',
+        desc: "I am a senior studying Mathematics.",
         index: 4
     }, {
         position: 'Public Relations',
-        name: 'Genesis Martinez Nieto',
-        headshot: publicityHeadshot2025,
+        name: 'Valentina Gonzalez',
+        headshot: publicityHeadshot2026,
         email: 'publicity@rushpe.org',
-        linkedin: 'https://www.linkedin.com/in/genesis-martinez-nieto',
-        desc: "Hi! My name is Genesis, I'm a sophomore studying Biomedical Engineering. I'm a proud Mexican-American and first-generation college student. This year, I'm excited to be SHE's Publicity Chair and serve the community that's given me so much. Outside of class, I like to spend my time crocheting, playing tennis, or learning to dance!",
+        linkedin: 'https://www.linkedin.com/in/valentina-gonzalez-b531b0a0/',
+        desc: "Hello, I’m a first-generation student and proud Chilean! I’m a current Physics student looking to transfer to Mechanical Engineering, with past internship experience in Information Technology. I’ll be serving as this year’s Publicity Chair, and my goal at SHPE is to uplift minority students in S.T.E.M. and help mentor them just like it has been done with me. I like to spend my free time dog sitting, traveling, and playing soccer. Feel free to connect with us, and welcome to our team!",
         index: 5
     }, {
         position: 'Academic Chair',
-        name: 'Axel Pillacela',
-        headshot: academicHeadshot2025,
+        name: 'Daniel Morantes-Villanueva',
+        headshot: academicHeadshot2026,
         email: 'academics@rushpe.org',
-        linkedin: 'https://www.linkedin.com/in/axel-pillacela-8483ab243',
-        desc: "My name is Axel Pillacela, a current junior studying Computer Engineering. After hearing about SHE through the EOF program, I knew I had to check it out if I wanted to see people like me on campus. I was able to grow a lot in just one year with SHE, and I'm excited to work with everyone this year as your Academic Excellence Chair!",
+        linkedin: 'https://www.linkedin.com/in/daniel-morantes-villanueva-91040a35a/',
+        desc: "I am a first-generation second-year student studying Mechanical Engineering. I love meeting new people and am always open to new experiences. On campus, I am either studying, giving tours as an Ambassador, or hanging out in the PRCC. In my free time, I love playing sports, listening to music, and hanging out with friends.",
         index: 6
     }, {
         position: 'Activities Chair',
-        name: 'Michael Schmidt',
-        headshot: activitiesHeadshot2025,
+        name: 'Joshua Arias',
+        headshot: activitiesHeadshot2026,
         email: 'activities@rushpe.org',
-        linkedin: 'https://www.linkedin.com/in/michael-schmidt-9a7272328',
-        desc: "I am a Sophomore studying Industrial and Systems Engineering. Not only am I an active representative for the Society of Hispanic Engineers but also partakes in the Rutgers Unión Estudiantil Puertorriqueña. When I am not studying or in class, I am an active gymgoer and writer.",
+        linkedin: 'https://www.linkedin.com/in/joshua-arias-j/',
+        desc: "My name is Joshua Arias, a sophomore majoring in Mechanical Engineering. As this year’s Activities Chair, I’m excited to show full commitment to this amazing organization. In my free time, I like to play soccer, enjoy the outdoors, and hang out with family and friends.",
         index: 7
     }, {
         position: 'Community Service',
-        name: 'Ricardo Rodriguez',
-        headshot: communityHeadshot2025,
+        name: 'Leslie Bunay',
+        headshot: communityHeadshot2026,
         email: 'community@rushpe.org',
-        linkedin: "https://www.linkedin.com/in/ricardo-rodriguez06",
-        desc: "My name is Ricardo Rodriguez, I am majoring in mechanical engineering, and I like to play instruments and sing.",
+        linkedin: "https://www.linkedin.com/in/lesliebunay20/",
+        desc: "I’m a first-generation, Ecuadorian student studying Mechanical Engineering and graduating in 2028. I’m also pursuing an Aerospace concentration! I love hiking and discovering new hobbies to try.",
         index: 8
     },
     {
         position: 'SHPEtinas Chair',
-        name: "Ana-Maria Moreno",
-        headshot: shpetinasHeadshot2025,
+        name: "Esmeralda Gil",
+        headshot: shpetinasHeadshot2026,
         email: 'shpetinas@rushpe.org',
-        linkedin: "https://www.linkedin.com/in/anamariacmoreno?",
-        desc: "Hello, my name is Ana and I am studying Industrial and Systems Engineering. I am this years SHPEtinas Chair and am looking forward to giving back to the community that has helped me through both personal and professional growth! I love to travel, go swimming, and crocheting.",
+        linkedin: "https://www.linkedin.com/in/esmeralda-gil-/",
+        desc: "Hi, my name is Esmeralda! I a junior studying Chemical Engineering. I am excited to serve as this year's SHPEtinas Chair. This year, my goal is to create meaninful opportunities, build confidence, and form lasting connections for our members. In my free time, I enjoy reading playing softball, and spending time with friends.",
         index: 9
     },
     {
         position: 'Webmaster',
-        name: 'Steven Chen',
-        headshot: webmasterHeadshot2025,
+        name: 'Ricardo Barahona',
+        headshot: webmasterHeadshot2026,
         email: 'webmaster@rushpe.org',
-        linkedin: "https://www.linkedin.com/in/steven-chen-0193ba295/",
-        desc: "Hi! My name is Steven and I'm currently a junior studying Computer Science. I'm excited to be part of SHPE and look forward to using technology to uplift underrepresented communities and inspire the next generation of innovators. I enjoy playing tennis, hiking, and eating food.",
+        linkedin: "https://www.linkedin.com/in/ricardoebarahona/",
+        desc: "Hey all, I’m Ricardo B. I am half Puerto Rican and half Salvadoran, and a junior studying Electrical Engineering. I live near the shore, and I love to play video games in my free time. Most of the time you’ll catch me at the PRCC or the Rutgers gym, but if you see me on campus, please say Hi!",
         index: 9
     }, {
         position: 'Outreach Chair',
-        name: 'Kevin Pena',
-        headshot: outreachHeadshot2025,
+        name: 'Mariana U. Wharff',
+        headshot: outreachHeadshot2026,
         email: 'outreach@rushpe.org',
-        linkedin: "www.linkedin.com/in/kevin-pena-583490291",
-        desc: "My name is Kevin Pena, a senior majoring in Mechanical Engineering with a concentration in Energy. As this year's Outreach chair, I am committed to my mission of inspiring the next generation of minority students in STEM. In my free time, I enjoy playing soccer, listening to music, and snowboarding.",
+        linkedin: "https://www.linkedin.com/in/mariana-uribe-wharff-aba08b384",
+        desc: "I am a second-year student at Rutgers University, majoring in Industrial & Systems Engineering. I’m a proud Colombian and SHE member who enjoys connecting with and inspiring other students pursuing careers in STEM. Outside of academics, I love playing the piano, staying active at the gym, and continuously challenging myself to grow both personally and professionally.",
         index: 10
     }, {
         position: 'Collegiate Chair',
-        name: 'Daniela Reyes',
-        headshot: collegiateHeadshot2025,
+        name: 'Ahmed Ouardbane',
+        headshot: collegiateHeadshot2026,
         email: 'collegiate@rushpe.org',
-        linkedin: "https://www.linkedin.com/in/daniela-reyes-194318336",
-        desc: "Hi! I'm Daniela Reyes, a sophomore majoring in electrical engineering. In my free time, I enjoy running! It helps clear my mind and stay balanced during busy semesters. I just completed my first half marathon in April 2025 and I'm currently training for a full marathon in 2026.",
+        linkedin: "https://www.linkedin.com/in/ahmed-ouardbane-22853231b/",
+        desc: "I am a junior studying Electrical Engineering and a certificate in Packaging Engineering, and I am excited to be this year's Collegiate Chair. I am half Peruvian and Moroccan. In my free time like to hang out with friends, drive around, shop for clothes and tech, and help others in any way I can.",
         index: 11
     }, {
         position: 'Fundraising Chair',
-        name: 'Kevin Arruda',
-        headshot: fundraisingHeadshot2025,
+        name: 'Joshua Elgalwy',
+        headshot: fundraisingHeadshot2026,
         email: 'fundraising@rushpe.org',
-        linkedin: 'https://www.linkedin.com/in/kevin-arruda',
-        desc: "I am currently a senior studying Mechanical Engineering, with a concentration in energy. I hope to leverage my internship experiences and work with other member to lead a successful fundraising campaign. In addition, I am also Co-Founding an engineering club focusing on competing an electric boat.",
+        linkedin: 'https://www.linkedin.com/in/joshuaelgawly',
+        desc: "I’m a junior studying Mechanical Engineering at Rutgers University and am of Puerto Rican and Egyptian descent. In the summer, I enjoy playing soccer and relaxing at the beach, while in the winter, I love spending time on the slopes and participating in snow sports. I also enjoy spending time with friends and family and building connections with new people at SHE. I am passionate about creating opportunities that support our members’ professional development and help strengthen our chapter.",
         index: 12
     }, {
         position: 'Historian',
-        name: 'Fabiana Angulo',
-        headshot: historianHeadshot2025,
+        name: 'Natalie Mercado',
+        headshot: historianHeadshot2026,
         email: 'historian@rushpe.org',
-        linkedin: 'http://linkedin.com/in/fabiana-angulo2000',
-        desc: "Hi, my name is Fabiana Angulo, and I'm currently studying Biomedical Engineering. I was born and raised in Peru.",
+        linkedin: 'https://www.linkedin.com/in/natalie-mercado-142b2b331/',
+        desc: "Hey! I'm Natalie, a junior studying Industrial and Systems Engineering.",
         index: 13
     },
 ];
