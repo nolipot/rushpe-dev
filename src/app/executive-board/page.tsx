@@ -21,6 +21,9 @@ import './executive-board.css';
 type Member = {
   position: string;
   name: string;
+  major?: string | null;
+  photoPosition?: string;
+  photoScale?: number;
   headshot: any;
   email?: string | null;
   linkedin?: string | null;
@@ -79,56 +82,113 @@ function Chip({ children }: { children: React.ReactNode }) {
 }
 
 function MemberCard({ m }: { m: Member }) {
-  return (
-    <motion.article variants={cardItem} className="eb-card group">
-      <div className="eb-card-media">
-        <Image
-          src={m.headshot}
-          alt={`${m.position} — ${m.name}`}
-          fill
-          sizes="(max-width: 640px) 90vw, (max-width: 1024px) 40vw, 360px"
-          className="object-cover"
-        />
+  const [flipped, setFlipped] = useState(false);
+  const hasBio = Boolean(m.desc);
 
-        {/* gradient + name/role */}
-        <div className="eb-card-gradient" />
-        <div className="eb-card-bottom">
-          <h3 className="eb-card-name">{m.name}</h3>
-          <p className="eb-card-role">{m.position}</p>
+  const toggleCard = () => {
+    if (hasBio) setFlipped((current) => !current);
+  };
+
+  return (
+    <motion.article
+      variants={cardItem}
+      className={`eb-card ${flipped ? 'is-flipped' : ''}`}
+      onClick={toggleCard}
+      onMouseLeave={() => setFlipped(false)}
+    >
+      <div className="eb-card-inner">
+        <div className="eb-card-face eb-card-front" aria-hidden={flipped}>
+          <Image
+            src={m.headshot}
+            alt={`${m.name}, ${m.position}`}
+            fill
+            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 320px"
+            className="eb-card-photo object-cover"
+            style={{
+              objectPosition: m.photoPosition ?? '50% 50%',
+              transform: `scale(${m.photoScale ?? 1})`,
+            }}
+          />
+
+          <div className="eb-card-gradient" />
+          <div className="eb-card-bottom-blur" />
+          <span className="eb-card-position">{m.position}</span>
+
+          <div className="eb-card-bottom">
+            <h3 className="eb-card-name">{m.name}</h3>
+            {m.major && <p className="eb-card-major">{m.major}</p>}
+
+            <div className="eb-card-footer">
+              <div className="eb-contact-actions">
+                {m.linkedin && (
+                  <a
+                    className="eb-icon-btn"
+                    href={m.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${m.name}'s LinkedIn`}
+                    title="LinkedIn"
+                    onClick={(event) => event.stopPropagation()}
+                  >
+                    <FaLinkedinIn />
+                  </a>
+                )}
+                {m.email && (
+                  <a
+                    className="eb-icon-btn"
+                    href={`mailto:${m.email}`}
+                    aria-label={`Email ${m.name}`}
+                    title="Email"
+                    onClick={(event) => event.stopPropagation()}
+                  >
+                    <MdOutlineMail />
+                  </a>
+                )}
+              </div>
+
+              {hasBio && (
+                <button
+                  type="button"
+                  className="eb-card-cta"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setFlipped(true);
+                  }}
+                  aria-expanded={flipped}
+                >
+                  View Bio
+                </button>
+              )}
+            </div>
+          </div>
         </div>
 
-        {/* hover bio */}
-        {m.desc && (
-          <div className="eb-card-desc">
-            <p>{m.desc}</p>
-          </div>
-        )}
-      </div>
+        <div className="eb-card-face eb-card-back" aria-hidden={!flipped}>
+          <div className="eb-card-back-scroll">
+            <div>
+              <span className="eb-card-back-label">Biography</span>
+              <h3 className="eb-card-back-name">{m.name}</h3>
+              <p className="eb-card-back-meta">
+                {m.position}{m.major ? ` · ${m.major}` : ''}
+              </p>
+            </div>
 
-      {/* actions */}
-      <div className="eb-actions">
-        {m.linkedin && (
-          <a
-            className="eb-icon-btn"
-            href={m.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${m.name}'s LinkedIn`}
-            title="LinkedIn"
+            <div className="eb-card-bio">
+            <p>{m.desc ?? 'Biography information is not available for this board.'}</p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="eb-card-back-button"
+            onClick={(event) => {
+              event.stopPropagation();
+              setFlipped(false);
+            }}
           >
-            <FaLinkedinIn />
-          </a>
-        )}
-        {m.email && (
-          <a
-            className="eb-icon-btn"
-            href={`mailto:${m.email}`}
-            aria-label={`Email ${m.name}`}
-            title="Email"
-          >
-            <MdOutlineMail />
-          </a>
-        )}
+            Back to profile
+          </button>
+        </div>
       </div>
     </motion.article>
   );

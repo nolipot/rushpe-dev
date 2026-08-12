@@ -15,7 +15,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 /* ------------------------------- Hero image ----------------------------- */
-import ssmImg from "@/../public/she-swe-meet/she-swe-meet-logo.jpeg";
+import ssmImg from "@/../public/she-swe-meet/she-swe-meet-logo.png";
 
 /* -------------------------------- Data --------------------------------- */
 import type { Company, SponsorTiers, LogoLink, Organizer } from "./data/types";
@@ -233,7 +233,7 @@ export default function Corporate() {
             <div className="lg:col-span-6 text-center lg:text-left">
               <h1
                 data-reveal
-                className="hero-title reveal text-[42px] leading-[1.05] sm:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent"
+                className="hero-title reveal text-[42px] leading-[1.05] text-slate-900 sm:text-6xl font-extrabold tracking-tight"
               >
                 SHE–SWE–MEET Career Fair
               </h1>
@@ -266,8 +266,13 @@ export default function Corporate() {
                 className="reveal parallax-card relative w-full overflow-hidden rounded-3xl shadow-2xl ring-1 ring-black/5 bg-white/70 backdrop-blur transition-transform duration-300 will-change-transform"
                 style={enabled ? { transform: `translate3d(0, ${-shift}px, 0)` } : undefined}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={ssmImg.src} alt="Career fair photo" className="h-full w-full object-cover" />
+                <Image
+                  src={ssmImg}
+                  alt="SHE–SWE–MEET Career Fair event flyer"
+                  className="h-auto w-full object-cover"
+                  sizes="(max-width: 1023px) 100vw, 50vw"
+                  priority
+                />
               </div>
             </div>
           </div>

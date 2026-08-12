@@ -69,69 +69,85 @@
 
   /* ------------------ Member Card ------------------ */
   .eb-card {
-    @apply relative overflow-hidden rounded-3xl bg-white/70 backdrop-blur ring-1 ring-white/60
-           shadow-[0_10px_30px_rgba(2,6,23,.08)] transition-all duration-300
-           focus:outline-none;
+    @apply relative h-[31rem] rounded-3xl bg-transparent focus:outline-none;
+    perspective: 1200px;
   }
-  .eb-card:hover         { @apply -translate-y-1 shadow-[0_20px_50px_rgba(2,6,23,.14)]; }
-  .eb-card:focus-visible { @apply ring-2 ring-sky-300; }
+  .eb-card-inner {
+    @apply relative h-full w-full rounded-3xl shadow-[0_12px_32px_rgba(2,6,23,.12)];
+    transform-style: preserve-3d;
+    transition: transform 500ms cubic-bezier(.2,.75,.25,1), box-shadow 250ms ease;
+  }
+  .eb-card:hover .eb-card-inner {
+    @apply shadow-[0_20px_48px_rgba(2,6,23,.18)];
+  }
+  .eb-card.is-flipped .eb-card-inner { transform: rotateY(180deg); }
 
-  .eb-card-media { @apply relative h-[22rem]; }
+  .eb-card-face {
+    @apply absolute inset-0 overflow-hidden rounded-3xl ring-1 ring-slate-200;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .eb-card-front { @apply bg-slate-200; }
+  .eb-card-photo {
+    transform-origin: center;
+    transition: transform 350ms ease;
+  }
+  .eb-card-back {
+    @apply flex flex-col bg-[#172033] text-white;
+    transform: rotateY(180deg);
+  }
 
-  /* Readability gradient behind name/role */
+  /* Readability gradient behind profile details */
   .eb-card-gradient {
     @apply pointer-events-none absolute inset-0 rounded-3xl;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(2,6,23,.55) 85%);
+    background: linear-gradient(to bottom, rgba(2,6,23,.02) 35%, rgba(2,6,23,.88) 100%);
+  }
+  .eb-card-bottom-blur {
+    @apply pointer-events-none absolute inset-x-0 bottom-0 h-[42%];
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 32%, #000 100%);
+    mask-image: linear-gradient(to bottom, transparent, #000 32%, #000 100%);
   }
 
-  /* Name/role: always visible, above bio panel */
-  .eb-card-bottom { @apply absolute inset-x-0 bottom-0 p-4 sm:p-5 text-white z-30; }
-  .eb-card-name   { @apply text-lg font-semibold leading-tight drop-shadow; }
-  .eb-card-role   { @apply text-[13px] font-medium opacity-90 drop-shadow; }
+  .eb-card-position {
+    @apply absolute left-4 top-4 z-20 rounded-full border border-white/30 bg-slate-950/55 px-3 py-1.5
+           text-[11px] font-semibold uppercase tracking-[0.12em] text-white backdrop-blur-md;
+  }
 
-  /* ---------- Actions (always clickable & above overlays) ---------- */
-  .eb-actions { @apply absolute right-3 top-3 flex gap-2 z-40 pointer-events-auto; }
+  .eb-card-bottom { @apply absolute inset-x-0 bottom-0 z-20 p-5 text-white; }
+  .eb-card-name   { @apply text-2xl font-bold leading-tight drop-shadow; }
+  .eb-card-major  { @apply mt-1 text-sm font-medium text-white/80 drop-shadow; }
+  .eb-card-footer { @apply mt-5 flex items-center justify-between gap-3; }
+  .eb-contact-actions { @apply flex gap-2; }
+
   .eb-icon-btn {
-    @apply relative z-40 grid place-items-center h-9 w-9 rounded-xl bg-white text-slate-800 ring-1 ring-slate-200
-           hover:bg-slate-100 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300;
+    @apply grid h-10 w-10 place-items-center rounded-xl bg-white text-lg text-slate-800 ring-1 ring-white/70
+           transition hover:-translate-y-0.5 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300;
     box-shadow: 0 8px 18px rgba(2, 6, 23, .10);
   }
-
-  /* ---------- Slide-up Bio Panel (bounded; never covers name row) ---------- */
-  /**
-   * Leaves a reserved "safe zone" at the bottom for the name/role row,
-   * and starts the panel below the eye-line to avoid covering faces too much.
-   * Long bios scroll inside the panel.
-   */
-  .eb-card-desc {
-    @apply absolute left-0 right-0
-           /* Reserve ~4.75rem for the name row (adjust to your line-height) */
-           bottom-[4.75rem]
-           /* Start panel roughly below the mid-face area */
-           top-[22%]
-           p-5 sm:p-6 text-white/95
-           bg-gradient-to-b from-slate-900/10 via-slate-900/40 to-slate-900/80
-           opacity-0 translate-y-4
-           rounded-b-3xl
-           overflow-auto
-           transition duration-300;
-    pointer-events: none;    /* disabled until revealed */
-    z-index: 20;             /* below icons/name, above image */
+  .eb-card-cta {
+    @apply inline-flex min-h-10 items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold
+           text-slate-900 shadow-md transition hover:-translate-y-0.5 hover:bg-slate-100
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900;
   }
-
-  /* Reveal on hover and keyboard/mouse focus */
-  .eb-card:hover .eb-card-desc,
-  .eb-card:focus-within .eb-card-desc {
-    @apply opacity-100 translate-y-0;
-    pointer-events: auto;
+  .eb-card-back-label { @apply text-xs font-semibold uppercase tracking-[0.18em] text-red-300; }
+  .eb-card-back-name  { @apply mt-2 text-2xl font-bold leading-tight; }
+  .eb-card-back-meta  { @apply mt-1 text-sm leading-relaxed text-white/65; }
+  .eb-card-back-scroll {
+    @apply min-h-0 flex-1 overflow-y-auto overscroll-contain p-6 pb-4;
+    touch-action: pan-y;
   }
-
-  .eb-card-desc p { @apply text-sm leading-relaxed; }
-
-  /* Scrollbar styling for readability */
-  .eb-card-desc::-webkit-scrollbar        { width: 8px; }
-  .eb-card-desc::-webkit-scrollbar-thumb  { background-color: rgba(255,255,255,.35); border-radius: 9999px; }
-  .eb-card-desc::-webkit-scrollbar-track  { background-color: transparent; }
+  .eb-card-bio        { @apply mt-6; }
+  .eb-card-bio p      { @apply text-sm leading-7 text-white/90; }
+  .eb-card-back-button {
+    @apply mx-6 mb-6 inline-flex min-h-11 shrink-0 self-stretch items-center justify-center rounded-full border border-white/25 bg-white/10
+           px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20 focus:outline-none
+           focus-visible:ring-2 focus-visible:ring-white;
+  }
+  .eb-card-back-scroll::-webkit-scrollbar       { width: 6px; }
+  .eb-card-back-scroll::-webkit-scrollbar-thumb { background-color: rgba(255,255,255,.3); border-radius: 9999px; }
+  .eb-card-back-scroll::-webkit-scrollbar-track { background-color: transparent; }
 
   /* ------------------ CTA Button ------------------ */
   .eb-archive-trigger {
@@ -158,26 +174,10 @@
 
   .eb-archive-back { @apply inline-flex items-center gap-1 text-xl font-semibold text-slate-700 hover:text-slate-900; }
 
-  /* ------------------ Small-screen tuning ------------------ */
-  @media (max-width: 420px) {
-    .eb-card-desc {
-      top: 28%;
-      bottom: 5.25rem; /* a little more room for two-line names */
-    }
-  }
-
-  /* ------------------ Hover capability guard ------------------ */
-  /* Only apply hover interactions on devices that actually hover */
-  @media (hover: none) {
-    .eb-card:hover .eb-card-desc { opacity: 0; transform: translateY(1rem); pointer-events: none; }
-    /* focus-within still reveals on tap/keyboard */
-  }
-
   /* ------------------ Reduce motion safety ------------------ */
   @media (prefers-reduced-motion: reduce) {
-    .eb-card,
+    .eb-card-inner,
     .eb-icon-btn,
     .eb-archive-trigger { transition: none !important; }
-    .eb-card-desc { transition: none !important; }
   }
 }

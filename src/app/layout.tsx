@@ -7,8 +7,9 @@ import FooterBar from "@/components/footer.component";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "RUSHPE",
-  description: "RUSHPE Website",
+  title: "SHPE | Rutgers University",
+  description:
+    "Rutgers University chapter of the Society of Hispanic Professional Engineers—leading Hispanics in STEM through community, mentorship, and opportunity.",
 };
 
 export default function RootLayout({

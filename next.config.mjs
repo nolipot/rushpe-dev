@@ -3,7 +3,8 @@ const nextConfig = {
     // basePath: '/rushpe-dev',
     // distDir: 'dist',
     images: {
-        unoptimized: true
+        formats: ['image/avif', 'image/webp'],
+        minimumCacheTTL: 31_536_000,
     }
 };
 

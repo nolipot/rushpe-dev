@@ -20,32 +20,40 @@ const LINKS: NavItem[] = [
 
 const ACTIVE_UNDERLINE_COLOR = "bg-slate-900";
 const HEADER_H_MOBILE = "h-16"; // 4rem
-const HEADER_TOP = "top-16";    // keep in sync with HEADER_H_MOBILE
+const HEADER_TOP = "top-16 lg:top-20"; // keep in sync with the header heights
 
 export default function NavBar({ isTransparent = false }: { isTransparent?: boolean }) {
   const pathname = usePathname() || "/";
 
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [navVisible, setNavVisible] = useState(true);
   const [collapse, setCollapse] = useState(false);
   const [mounted, setMounted] = useState(false); // for portal
 
   const barRef = useRef<HTMLDivElement | null>(null);
-  const logoRef = useRef<HTMLAnchorElement | null>(null);
+  const brandRef = useRef<HTMLAnchorElement | null>(null);
   const ghostRef = useRef<HTMLUListElement | null>(null);
+  const lastScrollY = useRef(0);
 
   useEffect(() => setMounted(true), []);
 
-  // Keep navbar stable and visible; only update scrolled visual state.
+  // Hide while scrolling down; show again when scrolling up or at the top.
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 2);
+      const currentScrollY = window.scrollY;
+
+      setScrolled(currentScrollY > 2);
+      setNavVisible(
+        open || currentScrollY <= 2 || currentScrollY < lastScrollY.current,
+      );
+      lastScrollY.current = currentScrollY;
     };
 
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [open]);
 
   // Close menu on route change; Esc closes
   useEffect(() => setOpen(false), [pathname]);
@@ -59,18 +67,18 @@ export default function NavBar({ isTransparent = false }: { isTransparent?: bool
   useEffect(() => {
     const calc = () => {
       const bar = barRef.current;
-      const logo = logoRef.current;
+      const brand = brandRef.current;
       const ghost = ghostRef.current;
-      if (!bar || !logo || !ghost) return;
+      if (!bar || !brand || !ghost) return;
 
       const barW = bar.clientWidth;
-      const logoW = logo.clientWidth;
+      const brandW = brand.clientWidth;
       const linksW = Math.ceil(ghost.getBoundingClientRect().width);
 
       const rightControlsW = 48; // h-10 w-10 hamburger
       const gutters = 28;
 
-      const availableForLinks = barW - logoW - rightControlsW - gutters;
+      const availableForLinks = barW - brandW - rightControlsW - gutters;
       setCollapse(linksW > availableForLinks);
     };
 
@@ -113,7 +121,8 @@ export default function NavBar({ isTransparent = false }: { isTransparent?: bool
         className={[
           "sticky top-0 z-[60]",
           headerBg,
-          "transition-[background-color,box-shadow] duration-300",
+          navVisible ? "translate-y-0" : "-translate-y-full",
+          "transition-[transform,background-color,box-shadow] duration-300",
           "supports-[backdrop-filter]:backdrop-blur-md",
         ].join(" ")}
       >
@@ -128,22 +137,41 @@ export default function NavBar({ isTransparent = false }: { isTransparent?: bool
         {/* Top Bar */}
         <div
           ref={barRef}
-          className={`relative mx-auto flex ${HEADER_H_MOBILE} sm:h-18 lg:h-20 max-w-7xl items-center gap-3 px-3 sm:px-5 lg:px-6`}
+          className={`relative mx-auto flex ${HEADER_H_MOBILE} lg:h-20 max-w-7xl items-center gap-3 px-3 sm:px-5 lg:px-6`}
         >
-          {/* Logo (left) */}
+          {/* Rutgers SHPE brand lockup */}
           <Link
-            ref={logoRef}
+            ref={brandRef}
             href="/"
             aria-label="Rutgers SHPE Home"
-            className="relative inline-grid aspect-square h-12 sm:h-14 lg:h-16 shrink-0 place-items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-scarlet"
+            className="relative flex shrink-0 items-center gap-3 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-scarlet focus-visible:ring-offset-2"
           >
+            <span className="hidden items-center gap-3 lg:flex" aria-hidden="true">
+              <Image
+                src="/brand/shpe-national.png"
+                alt=""
+                width={681}
+                height={211}
+                className="h-auto w-[150px] object-contain xl:w-[165px]"
+              />
+
+              <span className="h-11 w-px bg-slate-300" />
+
+              <Image
+                src="/brand/she-logo-small.png"
+                alt=""
+                width={120}
+                height={120}
+                className="h-14 w-auto object-contain"
+              />
+            </span>
+
             <Image
-              src="/she-logo.png"
+              src="/brand/she-logo-small.png"
               alt="Rutgers SHPE logo"
-              width={360}
-              height={360}
-              className="h-12 sm:h-14 lg:h-16 w-auto object-contain"
-              priority
+              width={120}
+              height={120}
+              className="h-12 w-auto object-contain sm:h-14 lg:hidden"
             />
           </Link>
 
@@ -160,10 +188,10 @@ export default function NavBar({ isTransparent = false }: { isTransparent?: bool
             ))}
           </ul>
 
-          {/* Desktop nav (centered independent of logo & hamburger) */}
+          {/* Desktop nav */}
           {!collapse && (
-            <div className="pointer-events-none absolute inset-0 hidden md:flex items-center justify-center">
-              <nav aria-label="Primary" className="pointer-events-auto">
+            <div className="ml-auto hidden items-center md:flex">
+              <nav aria-label="Primary">
                 <ul className="flex items-center gap-5 lg:gap-6">
                   {LINKS.map((item) => {
                     const active = isActive(item.href);
@@ -204,8 +232,9 @@ export default function NavBar({ isTransparent = false }: { isTransparent?: bool
             aria-expanded={open}
             aria-controls="mobile-menu"
             className={[
-              "ml-auto md:hidden h-10 w-10 inline-flex items-center justify-center rounded-md bg-white text-slate-900 shadow-sm hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-scarlet",
+              "ml-auto h-10 w-10 items-center justify-center rounded-md bg-white text-slate-900 shadow-sm hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-scarlet",
               "relative z-[65]",
+              collapse ? "inline-flex" : "inline-flex md:hidden",
             ].join(" ")}
           >
             <span
@@ -231,7 +260,11 @@ export default function NavBar({ isTransparent = false }: { isTransparent?: bool
         createPortal(
           <div
             id="mobile-menu"
-            className={["fixed inset-x-0 bottom-0 z-[1200] md:hidden", HEADER_TOP].join(" ")}
+            className={[
+              "fixed inset-x-0 bottom-0 z-[1200]",
+              HEADER_TOP,
+              collapse ? "" : "md:hidden",
+            ].join(" ")}
             aria-hidden={!open}
           >
             <nav aria-label="Mobile" className="h-full bg-neutral-900 text-white/90">

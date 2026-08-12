@@ -28,7 +28,7 @@ import heroRightImg from "@/../public/shadow-program/shadow-program-10.jpg";
 
 // Signature programs images (ensure these paths exist in /public)
 import shadowProgramImg from "@/../public/shadow-program/shadow-program-10.jpg";
-import ssmCareerFairImg from "@/../public/she-swe-meet/she-swe-meet-logo.jpeg";
+import ssmCareerFairImg from "@/../public/she-swe-meet/she-swe-meet-logo.png";
 import shpetinasImg from "@/../public/shpetinas/shapeher-group-photo.jpg";
 
 /* -------------------------------------------------------------------------- */

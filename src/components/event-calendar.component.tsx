@@ -14,10 +14,10 @@ import { useState, useEffect, useMemo, MouseEvent } from "react";
 import "./event-calendar.component.css";
 import { VscChromeClose } from "react-icons/vsc";
 import { SiGooglecalendar } from "react-icons/si";
-import igIcon from "@/../public/socials/instagram-logo.png";
-import liIcon from "@/../public/socials/linkedin-logo.png";
-import fbIcon from "@/../public/socials/facebook-logo.png";
-import tkIcon from "@/../public/socials/tiktok-logo.png";
+import igIcon from "@/../public/socials/instagram-logo-small.png";
+import liIcon from "@/../public/socials/linkedin-logo-small.png";
+import fbIcon from "@/../public/socials/facebook-logo-small.png";
+import tkIcon from "@/../public/socials/tiktok-logo-small.png";
 
 /* ======================== Types ======================== */
 

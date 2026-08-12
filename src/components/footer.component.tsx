@@ -80,10 +80,10 @@ export default function FooterBar() {
           >
             <span className="relative inline-grid h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 place-items-center rounded-full ring-1 ring-slate-200 bg-white shadow-sm">
               <Image
-                src="/she-logo.png"
+                src="/brand/she-logo-small.png"
                 alt="Rutgers SHPE logo"
-                width={256}
-                height={256}
+                width={120}
+                height={120}
                 className="h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 rounded-full object-contain p-1"
                 priority={false}
               />

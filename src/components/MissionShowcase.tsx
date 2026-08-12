@@ -10,10 +10,9 @@ type Props = {
   intervalSec?: number; // autoplay (0 = off)
   title: string;
   body: string;
+  note?: string;
   cta?: { label: string; href: string };
   className?: string;
-  // NEW: show dots below (outside the image card)
-  dotsBelow?: boolean;
 };
 
 export default function MissionShowcase({
@@ -21,9 +20,9 @@ export default function MissionShowcase({
   intervalSec = 5,
   title,
   body,
+  note,
   cta = { label: "Learn more", href: "/about-us#mission" },
   className = "",
-  dotsBelow = true,
 }: Props) {
   const DURATION = 450;
 
@@ -39,6 +38,12 @@ export default function MissionShowcase({
 
   const len = images?.length ?? 0;
   const hasMany = len > 1;
+  const stats = [
+    { value: "1984", label: "Established" },
+    { value: "150+", label: "Active members" },
+    { value: "100+", label: "Alumni network" },
+    { value: "45+", label: "Annual events" },
+  ];
 
   const getDir = (from: number, to: number): 1 | -1 => {
     const forward = (to - from + len) % len;
@@ -129,13 +134,9 @@ export default function MissionShowcase({
         : "translateX(0%)"
       : "translateX(0%)";
 
-  // Dots UI (reused for below & overlay versions)
-    const Dots = ({ overlay = false }: { overlay?: boolean }) => (
+  const Dots = () => (
     <div
-      className={[
-        "flex justify-center items-center gap-3",              // larger gap
-        overlay ? "absolute bottom-4 left-0 right-0" : "mt-6", // a touch more offset below
-      ].join(" ")}
+      className="hidden items-center justify-center gap-1 sm:flex"
       role="tablist"
       aria-label="Slide navigation"
     >
@@ -149,15 +150,20 @@ export default function MissionShowcase({
             aria-label={`Go to image ${i + 1}`}
             onClick={() => go(i)}
             className={[
-              // Strict circles, bigger size (10px)
-              "h-2.5 w-2.5 rounded-full transition-colors duration-200",
-              // Active/inactive colors (Apple-like greys; active darker)
-              active ? "bg-slate-900/85" : "bg-slate-400/55 hover:bg-slate-500/70",
-              // Optional glass when overlayed; safe focus
-              overlay ? "backdrop-blur-md" : "",
+              "group grid h-11 w-11 place-items-center rounded-full",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-scarlet",
             ].join(" ")}
-          />
+          >
+            <span
+              aria-hidden="true"
+              className={[
+                "h-2.5 w-2.5 rounded-full transition-colors duration-200",
+                active
+                  ? "bg-slate-900/85"
+                  : "bg-slate-400/55 group-hover:bg-slate-500/70",
+              ].join(" ")}
+            />
+          </button>
         );
       })}
     </div>
@@ -165,85 +171,133 @@ export default function MissionShowcase({
 
   return (
     <section
+      id="mission"
       className={[
-        // spacing
-        "w-full max-w-none mx-auto",
-        "pt-0 pb-10 sm:pt-1 sm:pb-12 md:pt-2 md:pb-14 lg:pt-3 lg:pb-16",
-        "px-0 md:px-4 lg:px-6 xl:px-6 2xl:px-6",
+        "scroll-mt-20 bg-white py-14 sm:py-16 lg:py-20",
         className,
       ].join(" ")}
-      aria-label="Mission showcase"
+      aria-labelledby="mission-title"
     >
-      {/* Card */}
-      <div
-        className="relative overflow-hidden rounded-none ring-1 ring-slate-200 shadow-sm"
-        onWheel={onWheel}
-      >
-        <div
-          className="relative h-[440px] sm:h-[520px] lg:h-[560px] w-full select-none"
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
-          aria-roledescription="carousel"
-          aria-live="polite"
-        >
-          {/* Prev (during animation only) */}
-          {(phase === "start" || phase === "run") && (
-            <Image
-              key={`prev-${prevIndex}`}
-              src={images[prevIndex]}
-              alt=""
-              fill
-              sizes="(max-width: 1024px) 100vw, 1200px"
-              className={`${baseImgCls} object-cover`}
-              style={{ ...styleRun, transform: prevTransform as any }}
-              priority={false}
-            />
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+          <div className="max-w-xl">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-red-700">
+            Our purpose
+          </span>
+          <h2
+            id="mission-title"
+            className="mt-3 text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl"
+          >
+            {title}
+          </h2>
+          <div className="mt-5 h-1 w-14 rounded-full bg-red-700" />
+          <p className="mt-6 text-xl font-semibold leading-relaxed text-slate-800 sm:text-2xl">
+            {body}
+          </p>
+          {note && (
+            <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+              {note}
+            </p>
           )}
+          <Link
+            href={cta.href}
+            className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full bg-red-700 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700 focus-visible:ring-offset-2"
+          >
+            {cta.label}
+          </Link>
+        </div>
 
-          {/* Current */}
-          <Image
-            key={`curr-${index}`}
-            src={images[index]}
-            alt="Rutgers SHPE mission gallery image"
-            fill
-            sizes="(max-width: 1024px) 100vw, 1200px"
-            className={`${baseImgCls} object-cover`}
-            style={{ ...styleRun, transform: currTransform as any }}
-            priority={false}
-          />
+          <div>
+          <div
+            className="relative overflow-hidden rounded-2xl bg-slate-100 shadow-lg ring-1 ring-slate-200"
+            onWheel={onWheel}
+          >
+            <div
+              className="relative aspect-[4/3] w-full select-none sm:aspect-[16/10]"
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+              aria-roledescription="carousel"
+              aria-live="polite"
+            >
+              {/* Prev (during animation only) */}
+              {(phase === "start" || phase === "run") && (
+                <Image
+                  key={`prev-${prevIndex}`}
+                  src={images[prevIndex]}
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  className={`${baseImgCls} object-cover`}
+                  style={{ ...styleRun, transform: prevTransform as any }}
+                  priority={false}
+                />
+              )}
 
-          {/* Gradient shelf */}
-          <div className="pointer-events-none absolute inset-0">
-            <div className="hidden sm:block absolute inset-y-0 left-0 w-[44%] bg-gradient-to-r from-slate-900/70 via-slate-900/40 to-transparent" />
-            <div className="sm:hidden absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-slate-900/75 via-slate-900/40 to-transparent" />
-          </div>
-
-          {/* Text */}
-          <div className="absolute inset-0 grid">
-            <div className="m-4 md:m-6 lg:m-8 self-end sm:self-center sm:justify-self-start sm:max-w-md text-white">
-              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight drop-shadow">
-                {title}
-              </h2>
-              <p className="mt-3 text-white/90 sm:text-lg">{body}</p>
-              <div className="mt-5">
-                <Link
-                  href={cta.href}
-                  className="inline-flex items-center gap-2 rounded-full bg-white/95 px-5 py-2.5 text-slate-900 font-semibold ring-1 ring-white/70 backdrop-blur hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-scarlet"
-                >
-                  {cta.label}
-                  <span aria-hidden></span>
-                </Link>
-              </div>
+              {/* Current */}
+              <Image
+                key={`curr-${index}`}
+                src={images[index]}
+                alt="Rutgers SHPE mission gallery image"
+                fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className={`${baseImgCls} object-cover`}
+                style={{ ...styleRun, transform: currTransform as any }}
+                priority={false}
+              />
             </div>
           </div>
 
-          {/* If you still want overlay dots on top of the image, flip this to true */}
-          {!dotsBelow && hasMany && <Dots overlay />}
+          {hasMany && (
+            <div className="mt-3 flex items-center justify-between">
+              <button
+                type="button"
+                onClick={prev}
+                aria-label="Previous mission image"
+                className="grid h-11 w-11 place-items-center rounded-full border border-slate-300 text-xl text-slate-800 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700"
+              >
+                <span aria-hidden="true">←</span>
+              </button>
+              <span
+                className="text-sm font-semibold tabular-nums text-slate-600 sm:hidden"
+                aria-live="polite"
+              >
+                {String(index + 1).padStart(2, "0")} / {String(len).padStart(2, "0")}
+              </span>
+              <Dots />
+              <button
+                type="button"
+                onClick={next}
+                aria-label="Next mission image"
+                className="grid h-11 w-11 place-items-center rounded-full border border-slate-300 text-xl text-slate-800 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-700"
+              >
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          )}
+          </div>
         </div>
-      </div>
 
-      {/* NEW: dots below the card in the white space (Apple-like) */}
-      {dotsBelow && hasMany && <Dots />}
+        <dl className="mt-12 grid grid-cols-2 overflow-hidden rounded-2xl border border-slate-200 bg-[#172033] text-white shadow-lg sm:mt-14 lg:grid-cols-4">
+          {stats.map((stat, statIndex) => (
+            <div
+              key={stat.label}
+              className={[
+                "px-4 py-6 text-center sm:px-6 sm:py-7",
+                statIndex % 2 === 1 ? "border-l border-white/10" : "",
+                statIndex >= 2 ? "border-t border-white/10 lg:border-t-0" : "",
+                statIndex > 0 ? "lg:border-l lg:border-white/10" : "",
+              ].join(" ")}
+            >
+              <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-white/60">
+                {stat.label}
+              </dt>
+              <dd className="mt-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                {stat.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
     </section>
   );
 }

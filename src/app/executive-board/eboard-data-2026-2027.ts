@@ -16,10 +16,14 @@ import collegiateHeadshot2026 from '@/../public/executive-board-24_25/ahmed-ouar
 import historianHeadshot2026 from '@/../public/executive-board-24_25/natalie-mercado.jpg';
 import outreachHeadshot2026 from '@/../public/executive-board-24_25/mariana-wharff.jpg';
 
+// Edit each member here. `major` appears on the front of the card and `desc`
+// appears after the card is flipped. Use `photoPosition` and `photoScale` only
+// when a headshot needs individual framing (for example: '50% 40%' and 1.1).
 export const eBoardData2026_2027 = [
     {
         position: 'President',
         name: 'Ricardo Rodriguez',
+        major: 'Mechanical Engineering',
         headshot: presidentHeadshot2026,
         email: 'president@rushpe.org',
         linkedin: 'https://www.linkedin.com/in/ricardo-rodriguez06/',
@@ -28,6 +32,9 @@ export const eBoardData2026_2027 = [
     }, {
         position: 'External Vice President',
         name: 'Juan Flechas',
+        major: 'Mechanical Engineering',
+        photoPosition: '50% 44%',
+        photoScale: 1.1,
         headshot: externalVpHeadshot2026,
         email: 'externalvp@rushpe.org',
         linkedin: 'https://www.linkedin.com/in/juan-flechas/',
@@ -36,6 +43,8 @@ export const eBoardData2026_2027 = [
     }, {
         position: 'Internal Vice President',
         name: 'Rodrigo Márquez',
+        major: 'Industrial Engineering',
+        photoPosition: '50% 42%',
         headshot: internalVpHeadshot2026,
         email: 'internalvp@rushpe.org',
         linkedin: 'https://www.linkedin.com/in/rodrigo-marquez1/',
@@ -44,6 +53,9 @@ export const eBoardData2026_2027 = [
     }, {
         position: 'Secretary',
         name: 'Isa Lanman',
+        major: 'Electrical Engineering',
+        photoPosition: '50% 45%',
+        photoScale: 1.1,
         headshot: secretaryHeadshot2026,
         email: 'secretary@rushpe.org',
         linkedin: 'https://www.linkedin.com/in/isabel-lanman/',
@@ -52,6 +64,7 @@ export const eBoardData2026_2027 = [
     }, {
         position: 'Treasurer',
         name: 'Seiry Gonzalez',
+        major: 'Mathematics',
         headshot: treasurerHeadshot2026,
         email: 'treasurer@rushpe.org',
         linkedin: 'https://www.linkedin.com/in/seiry-gonzalez/',
@@ -60,6 +73,7 @@ export const eBoardData2026_2027 = [
     }, {
         position: 'Public Relations',
         name: 'Valentina Gonzalez',
+        major: 'Physics',
         headshot: publicityHeadshot2026,
         email: 'publicity@rushpe.org',
         linkedin: 'https://www.linkedin.com/in/valentina-gonzalez-b531b0a0/',
@@ -68,6 +82,7 @@ export const eBoardData2026_2027 = [
     }, {
         position: 'Academic Chair',
         name: 'Daniel Morantes-Villanueva',
+        major: 'Mechanical Engineering',
         headshot: academicHeadshot2026,
         email: 'academics@rushpe.org',
         linkedin: 'https://www.linkedin.com/in/daniel-morantes-villanueva-91040a35a/',
@@ -76,6 +91,8 @@ export const eBoardData2026_2027 = [
     }, {
         position: 'Activities Chair',
         name: 'Joshua Arias',
+        major: 'Mechanical Engineering',
+        photoPosition: '50% 38%',
         headshot: activitiesHeadshot2026,
         email: 'activities@rushpe.org',
         linkedin: 'https://www.linkedin.com/in/joshua-arias-j/',
@@ -84,6 +101,7 @@ export const eBoardData2026_2027 = [
     }, {
         position: 'Community Service',
         name: 'Leslie Bunay',
+        major: 'Mechanical Engineering',
         headshot: communityHeadshot2026,
         email: 'community@rushpe.org',
         linkedin: "https://www.linkedin.com/in/lesliebunay20/",
@@ -93,6 +111,7 @@ export const eBoardData2026_2027 = [
     {
         position: 'SHPEtinas Chair',
         name: "Esmeralda Gil",
+        major: 'Chemical Engineering',
         headshot: shpetinasHeadshot2026,
         email: 'shpetinas@rushpe.org',
         linkedin: "https://www.linkedin.com/in/esmeralda-gil-/",
@@ -102,6 +121,7 @@ export const eBoardData2026_2027 = [
     {
         position: 'Webmaster',
         name: 'Ricardo Barahona',
+        major: 'Electrical Engineering',
         headshot: webmasterHeadshot2026,
         email: 'webmaster@rushpe.org',
         linkedin: "https://www.linkedin.com/in/ricardoebarahona/",
@@ -110,6 +130,7 @@ export const eBoardData2026_2027 = [
     }, {
         position: 'Outreach Chair',
         name: 'Mariana U. Wharff',
+        major: 'Industrial & Systems Engineering',
         headshot: outreachHeadshot2026,
         email: 'outreach@rushpe.org',
         linkedin: "https://www.linkedin.com/in/mariana-uribe-wharff-aba08b384",
@@ -118,6 +139,7 @@ export const eBoardData2026_2027 = [
     }, {
         position: 'Collegiate Chair',
         name: 'Ahmed Ouardbane',
+        major: 'Electrical Engineering',
         headshot: collegiateHeadshot2026,
         email: 'collegiate@rushpe.org',
         linkedin: "https://www.linkedin.com/in/ahmed-ouardbane-22853231b/",
@@ -126,6 +148,9 @@ export const eBoardData2026_2027 = [
     }, {
         position: 'Fundraising Chair',
         name: 'Joshua Elgalwy',
+        major: 'Mechanical Engineering',
+        photoPosition: '50% 38%',
+        photoScale: 1.22,
         headshot: fundraisingHeadshot2026,
         email: 'fundraising@rushpe.org',
         linkedin: 'https://www.linkedin.com/in/joshuaelgawly',
@@ -134,6 +159,7 @@ export const eBoardData2026_2027 = [
     }, {
         position: 'Historian',
         name: 'Natalie Mercado',
+        major: 'Industrial & Systems Engineering',
         headshot: historianHeadshot2026,
         email: 'historian@rushpe.org',
         linkedin: 'https://www.linkedin.com/in/natalie-mercado-142b2b331/',
