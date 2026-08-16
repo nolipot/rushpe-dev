@@ -87,15 +87,21 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
-  .eb-card-front { @apply bg-slate-200; }
+  .eb-card-front {
+    @apply bg-slate-200;
+    pointer-events: auto;
+  }
   .eb-card-photo {
     transform-origin: center;
     transition: transform 350ms ease;
   }
   .eb-card-back {
     @apply flex flex-col bg-[#172033] text-white;
+    pointer-events: none;
     transform: rotateY(180deg);
   }
+  .eb-card.is-flipped .eb-card-front { pointer-events: none; }
+  .eb-card.is-flipped .eb-card-back  { pointer-events: auto; }
 
   /* Readability gradient behind profile details */
   .eb-card-gradient {
