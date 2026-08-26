@@ -44,7 +44,7 @@ const tMed = { duration: 0.6, ease };
 
 export default function AboutPage() {
   return (
-    <main className="bg-white text-slate-900">
+    <main className="overflow-x-hidden bg-white text-slate-900">
       {/* =============================== HERO =============================== */}
       <section className="mx-auto max-w-7xl px-6 pt-14 pb-10 sm:pt-20 sm:pb-14 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">

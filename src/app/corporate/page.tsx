@@ -87,7 +87,7 @@ function useParallax(
       window.removeEventListener("resize", check);
       window.removeEventListener("orientationchange", check);
     };
-  }, []);
+  }, [disableBelow]);
 
   useEffect(() => {
     if (!enabled) {
@@ -220,7 +220,7 @@ export default function Corporate() {
   const { platinum, gold, silver, bronze } = SPONSORS as SponsorTiers;
 
   return (
-    <main className={`${plusJakarta.className} bg-gradient-to-b from-slate-50 via-slate-50 to-slate-100`}>
+    <main className={`${plusJakarta.className} overflow-x-hidden bg-gradient-to-b from-slate-50 via-slate-50 to-slate-100`}>
       {/* -------------------------------- HERO ------------------------------- */}
       <section className="hero-section relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10">
@@ -287,7 +287,8 @@ export default function Corporate() {
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="sponsor-ribbon-lg">
                 <SparkleIcon className="h-5 w-5 mr-3 opacity-80" />
-                Special Thanks to Our Sponsors
+                <span className="sm:hidden">Thanks to Our Sponsors</span>
+                <span className="hidden sm:inline">Special Thanks to Our Sponsors</span>
                 <SparkleIcon className="h-5 w-5 ml-3 opacity-80" />
               </span>
             </div>

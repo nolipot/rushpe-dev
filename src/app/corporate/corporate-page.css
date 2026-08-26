@@ -36,7 +36,7 @@
 
   /* ---------- Sponsor ribbon ---------- */
   .sponsor-ribbon-lg {
-    @apply inline-flex items-center rounded-full bg-white text-slate-800 px-6 py-3 text-[16px] font-extrabold tracking-tight border border-white/70 backdrop-blur-sm;
+    @apply inline-flex items-center rounded-full bg-white text-slate-800 px-3 py-2 text-sm sm:px-6 sm:py-3 sm:text-[16px] font-extrabold tracking-tight border border-white/70 backdrop-blur-sm;
     box-shadow: 0 10px 30px rgba(2,6,23,0.10);
   }
 

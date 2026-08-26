@@ -74,6 +74,7 @@
   }
   .eb-card-inner {
     @apply relative h-full w-full rounded-3xl shadow-[0_12px_32px_rgba(2,6,23,.12)];
+    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     transition: transform 500ms cubic-bezier(.2,.75,.25,1), box-shadow 250ms ease;
   }
@@ -86,10 +87,13 @@
     @apply absolute inset-0 overflow-hidden rounded-3xl ring-1 ring-slate-200;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    transition: visibility 0s linear 250ms;
   }
   .eb-card-front {
     @apply bg-slate-200;
     pointer-events: auto;
+    transform: rotateY(0deg);
+    visibility: visible;
   }
   .eb-card-photo {
     transform-origin: center;
@@ -99,9 +103,16 @@
     @apply flex flex-col bg-[#172033] text-white;
     pointer-events: none;
     transform: rotateY(180deg);
+    visibility: hidden;
   }
-  .eb-card.is-flipped .eb-card-front { pointer-events: none; }
-  .eb-card.is-flipped .eb-card-back  { pointer-events: auto; }
+  .eb-card.is-flipped .eb-card-front {
+    pointer-events: none;
+    visibility: hidden;
+  }
+  .eb-card.is-flipped .eb-card-back  {
+    pointer-events: auto;
+    visibility: visible;
+  }
 
   /* Readability gradient behind profile details */
   .eb-card-gradient {
@@ -128,7 +139,7 @@
   .eb-contact-actions { @apply flex gap-2; }
 
   .eb-icon-btn {
-    @apply grid h-10 w-10 place-items-center rounded-xl bg-white text-lg text-slate-800 ring-1 ring-white/70
+    @apply grid h-11 w-11 place-items-center rounded-xl bg-white text-lg text-slate-800 ring-1 ring-white/70
            transition hover:-translate-y-0.5 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300;
     box-shadow: 0 8px 18px rgba(2, 6, 23, .10);
   }
@@ -183,6 +194,7 @@
   /* ------------------ Reduce motion safety ------------------ */
   @media (prefers-reduced-motion: reduce) {
     .eb-card-inner,
+    .eb-card-face,
     .eb-icon-btn,
     .eb-archive-trigger { transition: none !important; }
   }
